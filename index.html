@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Contact Management System - Streamline Your Business Relationships</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Screenshot Section */
+        .screenshot-section {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .screenshot-wrapper {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .screenshot-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        /* App Views Section */
+        .appviews {
+            padding: 6rem 2rem;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .cube-container {
+            perspective: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+            margin-top: 3rem;
+        }
+
+        .cube {
+            width: 460px;
+            height: 460px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 20s infinite linear;
+        }
+
+        @keyframes rotateCube {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            25% {
+                transform: rotateX(0deg) rotateY(90deg);
+            }
+            50% {
+                transform: rotateX(0deg) rotateY(180deg);
+            }
+            75% {
+                transform: rotateX(0deg) rotateY(270deg);
+            }
+            100% {
+                transform: rotateX(0deg) rotateY(360deg);
+            }
+        }
+
+        .cube:hover {
+            animation-play-state: paused;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 460px;
+            height: 460px;
+            background: white;
+            border: 2px solid #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .cube-face img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .cube-face h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .face-front {
+            transform: translateZ(230px);
+        }
+
+        .face-back {
+            transform: rotateY(180deg) translateZ(230px);
+        }
+
+        .face-right {
+            transform: rotateY(90deg) translateZ(230px);
+        }
+
+        .face-left {
+            transform: rotateY(-90deg) translateZ(230px);
+        }
+
+        .face-top {
+            transform: rotateX(90deg) translateZ(230px);
+        }
+
+        .face-bottom {
+            transform: rotateX(-90deg) translateZ(230px);
+        }
+
+        .view-labels {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .view-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+
+        .view-label:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .view-label-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        /* Modal for full-size image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.7); }
+            to { transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #667eea;
+        }
+
+        .modal-title {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cube {
+                width: 280px;
+                height: 280px;
+            }
+
+            .cube-face {
+                width: 280px;
+                height: 280px;
+                padding: 1rem;
+            }
+
+            .face-front {
+                transform: translateZ(140px);
+            }
+
+            .face-back {
+                transform: rotateY(180deg) translateZ(140px);
+            }
+
+            .face-right {
+                transform: rotateY(90deg) translateZ(140px);
+            }
+
+            .face-left {
+                transform: rotateY(-90deg) translateZ(140px);
+            }
+
+            .face-top {
+                transform: rotateX(90deg) translateZ(140px);
+            }
+
+            .face-bottom {
+                transform: rotateX(-90deg) translateZ(140px);
+            }
+
+            .cube-face h3 {
+                font-size: 1.2rem;
+            }
+
+            .cube-container {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">CRM Pro</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#appviews">App Views</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <a href="#signup" class="cta-button">Get Started Free</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Manage Your Contacts & Relationships Like Never Before</h1>
+            <p>A powerful CRM system that helps you organize contacts, track interactions, and grow your business efficiently</p>
+            <div class="hero-buttons">
+                <a href="#demo" class="btn-primary">Try Demo</a>
+                <a href="#features" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Section -->
+    <section class="screenshot-section" id="demo">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Intuitive dashboard designed for productivity</p>
+            <div class="screenshot-wrapper">
+                <img src="saas.png" alt="CRM Dashboard Screenshot showing contact management interface with search functionality, data tables, and team management features">
+            </div>
+        </div>
+    </section>
+
+    <!-- App Views Section -->
+    <section class="appviews" id="appviews">
+        <div class="container">
+            <h2 class="section-title">Explore All Features</h2>
+            <p class="section-subtitle">Discover the different modules of our CRM system in 3D</p>
+            
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="cube-face face-front">
+                        <h3>Dashboard</h3>
+                        <img src="guidedtur/dashbord.png" alt="Dashboard Overview">
+                    </div>
+                    <div class="cube-face face-back">
+                        <h3>Contacts</h3>
+                        <img src="guidedtur/contacts.png" alt="Contact Management">
+                    </div>
+                    <div class="cube-face face-right">
+                        <h3>Deals</h3>
+                        <img src="guidedtur/deals.png" alt="Deal Pipeline">
+                    </div>
+                    <div class="cube-face face-left">
+                        <h3>Companies</h3>
+                        <img src="guidedtur/Companies.png" alt="Company Management">
+                    </div>
+                    <div class="cube-face face-top">
+                        <h3>Activities</h3>
+                        <img src="guidedtur/activities.png" alt="Activity Tracking">
+                    </div>
+                    <div class="cube-face face-bottom">
+                        <h3>User Management</h3>
+                        <img src="guidedtur/usermanagement.png" alt="User Administration">
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-labels">
+                <div class="view-label" onclick="openModal('guidedtur/dashbord.png', 'Dashboard')">
+                    <div class="view-label-dot"></div>
+                    Dashboard
+                </div>
+                <div class="view-label" onclick="openModal('guidedtur/contacts.png', 'Contacts')">
+                    <div class="view-label-dot"></div>
+                    Contacts
+                </div>
+                <div class="view-label" onclick="openModal('guidedtur/deals.png', 'Deals')">
+                    <div class="view-label-dot"></div>
+                    Deals
+                </div>
+                <div class="view-label" onclick="openModal('guidedtur/Companies.png', 'Companies')">
+                    <div class="view-label-dot"></div>
+                    Companies
+                </div>
+                <div class="view-label" onclick="openModal('guidedtur/activities.png', 'Activities')">
+                    <div class="view-label-dot"></div>
+                    Activities
+                </div>
+                <div class="view-label" onclick="openModal('guidedtur/usermanagement.png', 'User Management')">
+                    <div class="view-label-dot"></div>
+                    User Management
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for full-size images -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="modal-close">&times;</span>
+        <div class="modal-title" id="modalTitle"></div>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to manage customer relationships effectively</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Contact Management</h3>
+                    <p>Organize and access all your contacts in one centralized location. View names, emails, roles, and team assignments at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Advanced Search</h3>
+                    <p>Quickly find any contact with our powerful search functionality. Filter by name, email, team, or role to locate information instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Team Collaboration</h3>
+                    <p>Assign contacts to team members and departments. Track which teams are responsible for each relationship.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data Tables</h3>
+                    <p>View comprehensive contact information in easy-to-read tables. Sort and filter data to find exactly what you need.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Quick Actions</h3>
+                    <p>Perform common tasks with one click. Edit contacts, send emails, or update information without navigating away.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Role-Based Access</h3>
+                    <p>Define user roles and permissions to ensure team members see only relevant information based on their responsibilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our CRM?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-number">50%</div>
+                    <div class="benefit-text">Faster Contact Access</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-number">100%</div>
+                    <div class="benefit-text">Cloud-Based Security</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-number">24/7</div>
+                    <div class="benefit-text">Customer Support</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-number">∞</div>
+                    <div class="benefit-text">Unlimited Contacts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="signup">
+        <div class="container">
+            <h2>Ready to Transform Your Customer Relationships?</h2>
+            <p>Start your free trial today. No credit card required.</p>
+            <a href="#" class="btn-primary">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact Us</a>
+            <a href="#support">Support</a>
+        </div>
+        <p>&copy; 2024 CRM Pro. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(imageSrc, title) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modal.classList.add('active');
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
