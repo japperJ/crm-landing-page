@@ -794,7 +794,7 @@
     <!-- Feature Request Section -->
     <section class="feature-request" id="feature-request">
         <div class="container">
-            <h2 class="section-title">Create a Feature request/Issue for CRM---KUBE</h2>
+            <h2 class="section-title">Create a feature request/issue for CRM---KUBE</h2>
             <p class="section-subtitle">Help us improve by reporting issues or requesting new features</p>
             
             <form id="issueForm">
@@ -847,8 +847,11 @@
         document.getElementById("issueForm").addEventListener("submit", function(e) {
             e.preventDefault();
 
-            const title = encodeURIComponent(this.title.value);
-            const body = encodeURIComponent(this.body.value + "\n\n— Issue created via japperj.github.io");
+            const titleValue = document.getElementById("issue-title").value;
+            const bodyValue = document.getElementById("issue-description").value;
+            
+            const title = encodeURIComponent(titleValue);
+            const body = encodeURIComponent(bodyValue + "\n\n— Issue created via japperj.github.io");
             
             const url = `https://github.com/japperJ/CRM---KUBE/issues/new?title=${title}&body=${body}&labels=triage`;
             
