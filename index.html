@@ -483,6 +483,71 @@
             font-weight: 600;
         }
 
+        /* Feature Request Section */
+        .feature-request {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .feature-request .container {
+            max-width: 600px;
+        }
+
+        #issueForm {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        #issueForm label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        #issueForm input[type="text"],
+        #issueForm textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        #issueForm input[type="text"]:focus,
+        #issueForm textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        #issueForm textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        #issueForm button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        #issueForm button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -552,7 +617,7 @@
                 <li><a href="#benefits">Benefits</a></li>
                 <li><a href="#appviews">App Views</a></li>
                 <li><a href="#demo">Demo</a></li>
-                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#feature-request">Feature Request</a></li>
             </ul>
             <a href="#signup" class="cta-button">Get Started Free</a>
         </nav>
@@ -726,6 +791,24 @@
         </div>
     </section>
 
+    <!-- Feature Request Section -->
+    <section class="feature-request" id="feature-request">
+        <div class="container">
+            <h2 class="section-title">Create a feature request/issue for CRM---KUBE</h2>
+            <p class="section-subtitle">Help us improve by reporting issues or requesting new features</p>
+            
+            <form id="issueForm">
+                <label for="issue-title">Title</label>
+                <input type="text" id="issue-title" name="title" required>
+
+                <label for="issue-description">Description</label>
+                <textarea id="issue-description" name="body" rows="6" required></textarea>
+
+                <button type="submit">Create Issue</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-links">
@@ -758,6 +841,21 @@
             if (event.key === 'Escape') {
                 closeModal();
             }
+        });
+
+        // Handle feature request form submission
+        document.getElementById("issueForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const titleValue = document.getElementById("issue-title").value;
+            const bodyValue = document.getElementById("issue-description").value;
+            
+            const title = encodeURIComponent(titleValue);
+            const body = encodeURIComponent(bodyValue + "\n\n— Issue created via japperj.github.io");
+            
+            const url = `https://github.com/japperJ/CRM---KUBE/issues/new?title=${title}&body=${body}&labels=triage`;
+            
+            window.location.href = url;   // Redirect user to GitHub with fields prefilled
         });
     </script>
 </body>
