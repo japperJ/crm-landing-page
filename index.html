@@ -794,15 +794,15 @@
     <!-- Feature Request Section -->
     <section class="feature-request" id="feature-request">
         <div class="container">
-            <h2 class="section-title">Create an Feature request/Issue for CRM---KUBE</h2>
+            <h2 class="section-title">Create a Feature request/Issue for CRM---KUBE</h2>
             <p class="section-subtitle">Help us improve by reporting issues or requesting new features</p>
             
             <form id="issueForm">
-                <label>Title</label>
-                <input type="text" name="title" required>
+                <label for="issue-title">Title</label>
+                <input type="text" id="issue-title" name="title" required>
 
-                <label>Description</label>
-                <textarea name="body" rows="6" required></textarea>
+                <label for="issue-description">Description</label>
+                <textarea id="issue-description" name="body" rows="6" required></textarea>
 
                 <button type="submit">Create Issue</button>
             </form>
